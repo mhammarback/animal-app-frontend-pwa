@@ -53,5 +53,9 @@
     "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0"
   }
 }
