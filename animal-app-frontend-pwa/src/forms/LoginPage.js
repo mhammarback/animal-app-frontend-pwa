@@ -1,7 +1,10 @@
 import React, {useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import styled from 'styled-components'
 
+import { LottieAnimation } from '../assets/Lottie'
+import cat from '../assets/cat_animation.json'
 import { Button } from '../lib/Button'
 import { Main } from '../lib/Container'
 
@@ -19,32 +22,33 @@ export const LoginPage = ({ setPage }) => {
 	return (
 		<>
 		<Main>
-		<form onSubmit={handleSubmit}>
-			<label>
-				<Input 
-					type='text'
-					placeholder='Name'
-					value={name}
-					onChange={(event) => setName(event.target.value)}
-					minLength='2'
-					maxLength='20'
-					required
-				/>
-			</label>
-			<label>
-				<Input
-					type='text'
-					placeholder='Password'
-					value={password}
-					onChange={(event) => setPassword(event.target.value)}
-					minLength='5'
-					required
-				 />
-			</label>
-			<Button>Log in</Button>
-		</form>
-		<Span>or</Span>
-		<Button>Sign up</Button>
+			<LottieAnimation lotti={cat}  />
+		    <Form onSubmit={handleSubmit}>
+		    	<label>
+				  <Input 
+				  	type='text'
+				  	placeholder='Name'
+				  	value={name}
+				  	onChange={(event) => setName(event.target.value)}
+					  minLength='2'
+					  maxLength='20'
+					  required
+				  />
+		  	  </label>
+			    <label>
+				    <Input
+				    	type='text'
+				    	placeholder='Password'
+				    	value={password}
+				    	onChange={(event) => setPassword(event.target.value)}
+				    	minLength='5'
+				    	required
+				    />
+			    </label>
+			  <Button>Log in</Button>
+				<Span>or</Span>
+		    <Button>Sign up</Button>
+		  </Form>
 		</Main>
 		</>
 	)
@@ -66,8 +70,20 @@ export const Input = styled.input`
 	&::-webkit-input-placeholder {
     color: #fff;
   }
+
+	@media (min-width: 1024px) {
+		width: 315px;
+	}
 `
 
 export const Span = styled.span`
 	color: #fff;
+	text-align: center; 
+`
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px;
+
 `
