@@ -11,6 +11,11 @@ export const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setUsername: (state, action) => {
+      const { username } = action.payload;
+      localStorage.setItem('username', username);
+      state.username = username;
+    },
     setUserId: (state, action) => {
       const { userId } = action.payload
       state.userId = userId

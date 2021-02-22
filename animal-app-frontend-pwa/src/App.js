@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { user } from './reducers/user'
 import { StartPage } from './forms/StartPage'
+import { AnimalForm } from './forms/AnimalForm'
 
 
 const reducer = combineReducers({ user: user.reducer })
@@ -18,9 +19,11 @@ export const App = () => {
           <Route path='/'>
             <StartPage />
           </Route>
+          <Route path='/form'>
+            <AnimalForm />
+          </Route>
         </Switch>
       </BrowserRouter>
     </Provider>
   )
 }
-
