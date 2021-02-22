@@ -38,3 +38,32 @@ export const user = createSlice({
     }
   }
 })
+
+
+//THUNKS 
+
+export const login = (name, password) => {
+  return (dispatch) => {
+    fetch('https://final-project-technigo.herokuapp.com/sessions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, password })
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Unable to log in, please check your username and password.')
+        } else {
+          return res.json()
+        }
+      })
+      .then((json) => {
+        dispatch(user.actions.setUserId({ userId: json.userId }))
+        dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
+      })
+      .catch((error) => {
+        dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }))
+      })
+  }
+}
+
+

@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-const SIGNUP_URL =''
+import { user } from '../reducers/user'
+import { LottieAnimation } from '../assets/Lottie'
+import cat from '../assets/cat_animation.json'
+import { Button } from '../lib/Button'
+import { Main } from '../lib/Container'
+import { Form, Input } from './FormStyles'
+
+const SIGNUP_URL ='https://final-project-technigo.herokuapp.com/users'
 
 export const SignUp = ({ setPage }) => {
 	const dispatch = useDispatch()
 	const [name, setName] = useState('')
 	const [password, setPassword] = useState('')
 
+	useEffect(() => {
+    dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+  }, [dispatch])
 
 	const handleSubmit = (event) => {
-		event.preventDefault()
+    event.preventDefault()
 
 		fetch(SIGNUP_URL, {
 			method: 'POST',
@@ -34,29 +44,36 @@ export const SignUp = ({ setPage }) => {
 
 	return (
 		<>
-		<form onSubmit={handleSubmit}>
-			<label>
-				<input 
-					type='text'
-					placeholder='Enter name'
-					value={name}
-					onChange={(event) => setName(event.target.value)}
-					minLength='2'
-					maxLength='20'
-					required
-				/>
-			</label>
-			<label>
-				<input
-					type='text'
-					placeholder='Enter password'
-					value={password}
-					onChange={(event) => setPassword(event.target.value)}
-					minLength='5'
-					required
-				 />
-			</label>
-		</form>
+		<Main>
+			<LottieAnimation lotti={cat}  />
+		    <Form onSubmit={handleSubmit}>
+		    	<label>
+				  <Input 
+				  	type='text'
+				  	placeholder='Name'
+				  	value={name}
+				  	onChange={(event) => setName(event.target.value)}
+					  minLength='2'
+					  maxLength='20'
+					  required
+				  />
+		  	  </label>
+			    <label>
+				    <Input
+				    	type='text'
+				    	placeholder='Password'
+				    	value={password}
+				    	onChange={(event) => setPassword(event.target.value)}
+				    	minLength='5'
+				    	required
+				    />
+			    </label>
+			  <Button type='submit'>Sign up</Button>
+				<Span>or</Span>
+				<Button type='button' onClick={() => setPage('login')}>Log in</Button>
+		  </Form>
+			{error && <div>{`${error}`}</div>}
+		</Main>
 		</>
 	)
 }
