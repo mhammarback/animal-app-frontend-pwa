@@ -12,7 +12,7 @@ export const StartPage = () => {
 	if (!accessToken) {
 		return (
 			<>
-			{page === 'login' ? (<LoginPage setPage={setPage} />) : (<SignUp setPage={setPage} />)}
+			  {page === 'login' ? (<LoginPage setPage={setPage} />) : (<SignUp setPage={setPage} />)}
 		  </>
 		)
 	} else {

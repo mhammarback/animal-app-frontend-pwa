@@ -51,7 +51,7 @@ export const LoginPage = ({ setPage }) => {
 			    </label>
 			  <Button>Log in</Button>
 				<Span>or</Span>
-				<Button className="input-button" type="button" onClick={() => setPage("signup")}>Sign up</Button>
+				<Button type='button' onClick={() => setPage('signup')}>Sign up</Button>
 			</Form>
 			{error && <div className="div-error">{`${error}`}</div>}
 		</Main>

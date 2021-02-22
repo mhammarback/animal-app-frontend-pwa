@@ -6,7 +6,7 @@ import { LottieAnimation } from '../assets/Lottie'
 import cat from '../assets/cat_animation.json'
 import { Button } from '../lib/Button'
 import { Main } from '../lib/Container'
-import { Form, Input } from './FormStyles'
+import { Form, Input, Span } from './FormStyles'
 
 const SIGNUP_URL ='https://final-project-technigo.herokuapp.com/users'
 
@@ -72,7 +72,6 @@ export const SignUp = ({ setPage }) => {
 				<Span>or</Span>
 				<Button type='button' onClick={() => setPage('login')}>Log in</Button>
 		  </Form>
-			{error && <div>{`${error}`}</div>}
 		</Main>
 		</>
 	)
