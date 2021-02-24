@@ -18,5 +18,10 @@ margin: 20px 0px;
 @media (min-width: 1024px) {
 	flex-direction: row;
 }
+`
 
+export const Section = styled.section`
+  display:flex;
+	flex-direction: column; 
+	margin: 20px 0px; 
 `
