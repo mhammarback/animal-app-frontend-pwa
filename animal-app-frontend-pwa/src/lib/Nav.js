@@ -7,25 +7,25 @@ export const Nav = ({ open, setOpen }) => {
 	return (
 		<Section>
 		<Navbar open={open}>
-			<Text>NAVBAR</Text>
-			<Link to='/home'></Link>
-			<Link to='/profile'></Link>
-			<Link to='/about'></Link>
+			<Wrapper>
+			  <Link to='/home' onClick={() => setOpen(false)}></Link>
+			    <LinkText>HOME</LinkText>
+		  	<Link to='/profile' onClick={() => setOpen(false)}></Link>
+			    <LinkText>PROFILE</LinkText>
+		  	<Link to='/about' onClick={() => setOpen(false)}></Link>
+		      <LinkText>ABOUT</LinkText>
+			</Wrapper>
 		</Navbar>
 		</Section>
 	)
 }
-
-const Text = styled.p`
-  color: white;
-`
 
 const Navbar = styled.nav`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background: #cdd0cb;
+background: #000;
 transition: transform 0.3s ease-in-out;
 transform: translateX(-100%);
 position: absolute;
@@ -42,8 +42,29 @@ transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
 	display: none;
 }
 `
+//background: #cdd0cb;
 
 const Section = styled.div`
   width: 100%;
+`
 
+const LinkText = styled.p`
+  font-size: 18px;
+  color: #fff;
+
+	&:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transition-duration: 0.3s;
+  }
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid whitesmoke;
+  width: 80%; 
+  height: 70%;
 `

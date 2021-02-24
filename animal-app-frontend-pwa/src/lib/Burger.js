@@ -33,7 +33,6 @@ const BurgerMenu = styled.button`
     border-radius: 10px;
     transition: all 0.3s linear;
     transform-origin: 1px;
-    //animates the burger in to an X
     :first-child {
       transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
     }

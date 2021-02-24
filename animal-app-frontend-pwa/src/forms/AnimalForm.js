@@ -141,5 +141,6 @@ export const AnimalForm = () => {
 const Div = styled.div`
   display: flex; 
 	flex-direction: column;
-  padding: 40px 0px 20px 0px;
+  padding: 40px 10px 20px 10px;
+	font-family: 'PT Serif Caption', serif;
 `

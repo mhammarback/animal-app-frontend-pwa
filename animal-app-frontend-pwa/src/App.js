@@ -17,7 +17,8 @@ export const App = () => {
       <BrowserRouter>
         <Switch>
           <Route path='/'>
-            <StartPage />
+          <AnimalForm />
+            
           </Route>
           <Route path='/form'>
             <AnimalForm />
@@ -27,3 +28,6 @@ export const App = () => {
     </Provider>
   )
 }
+
+
+//<StartPage />

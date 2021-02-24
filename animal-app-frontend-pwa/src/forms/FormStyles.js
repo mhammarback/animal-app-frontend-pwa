@@ -4,7 +4,7 @@ export const Input = styled.input`
 	padding: 10px;
 	font-size: 18px;
 	margin: 10px;
-	width: 200px;
+	width: 250px;
 	border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -30,5 +30,6 @@ export const Span = styled.span`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+	align-items: center;
   padding: 10px 0px;
 `
