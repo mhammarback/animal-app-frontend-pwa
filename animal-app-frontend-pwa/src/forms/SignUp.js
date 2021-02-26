@@ -8,7 +8,7 @@ import { Button } from '../lib/Button'
 import { Main } from '../lib/Container'
 import { Form, Input, Span } from './FormStyles'
 
-const SIGNUP_URL ='https://final-project-technigo.herokuapp.com/users'
+const SIGNUP_URL ='https://animal-app-pwa.herokuapp.com/users'
 
 export const SignUp = ({ setPage }) => {
 	const dispatch = useDispatch()
@@ -19,7 +19,7 @@ export const SignUp = ({ setPage }) => {
     dispatch(user.actions.setErrorMessage({ errorMessage: null }))
   }, [dispatch])
 
-	const handleSubmit = (event) => {
+	const handleSignUp = (event) => {
     event.preventDefault()
 
 		fetch(SIGNUP_URL, {
@@ -36,9 +36,10 @@ export const SignUp = ({ setPage }) => {
 		.then ((json) => {
 			dispatch(user.actions.setUserId({ userId: json.userId}))
       dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
+			window.location.href = '/form'
 		})
 		.catch((error) => {
-			
+			dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }))
 		})
 	}
 
@@ -46,7 +47,7 @@ export const SignUp = ({ setPage }) => {
 		<>
 		<Main>
 			<LottieAnimation lotti={cat}  />
-		    <Form onSubmit={handleSubmit}>
+		    <Form onSubmit={handleSignUp}>
 		    	<label>
 				  <Input 
 				  	type='text'

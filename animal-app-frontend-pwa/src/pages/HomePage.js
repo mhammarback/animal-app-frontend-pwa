@@ -6,19 +6,26 @@ import { Nav } from '../lib/Nav'
 import { Section } from '../lib/Container'
 import { Span } from '../forms/FormStyles'
 import { ProfileCards } from '../lib/ProfileCards'
+import { LoginPage } from '../forms/LoginPage'
 
 export const HomePage = () => {
-	const [open, setOpen] = useState(false)
-
-	const dispatch = useDispatch()
+	const accessToken = useSelector((store) => store.user.accessToken)
 	const username = useSelector((store) => store.user.username)
-
-	return (
-	<Section>
-	  <Burger open={open} setOpen={setOpen} />
-	  <Nav open={open} setOpen={setOpen} />	
-	  	<Span>{`Welcome, ${username}`}</Span>
-			<ProfileCards />
-	</Section>	
-	)
+	const [open, setOpen] = useState(false)
+	const dispatch = useDispatch()
+	
+  if (accessToken) {
+		return (
+			<Section>
+				<Burger open={open} setOpen={setOpen} />
+				<Nav open={open} setOpen={setOpen} />	
+					<Span>{`Welcome, ${username}`}</Span>
+					<ProfileCards />
+			</Section>	
+			)
+	} else {
+		return (
+			<LoginPage />
+		)
+	}
 }

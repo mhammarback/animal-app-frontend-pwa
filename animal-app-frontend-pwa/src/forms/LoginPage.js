@@ -8,6 +8,8 @@ import { Button } from '../lib/Button'
 import { Main } from '../lib/Container'
 import { Form, Input, Span } from './FormStyles'
 
+const LOGIN_URL = 'https://animal-app-pwa.herokuapp.com/sessions'
+
 export const LoginPage = ({ setPage }) => {
 	const dispatch = useDispatch()
 	const [name, setName] = useState('')
@@ -20,8 +22,28 @@ export const LoginPage = ({ setPage }) => {
 
 	const handleSubmit = (event) => {
     event.preventDefault()
-    dispatch(login(name, password))
-  }
+
+		fetch(LOGIN_URL, {
+			method: 'POST',
+			headers: { 'Content-Type' : 'applicant/json' },
+			body: JSON.stringify({ name, password })
+		})
+		.then ((res) => {
+			if (!res.ok) {
+				throw new Error('Could not create account')
+
+			} return res.json()
+		})
+		.then ((json) => {
+			dispatch(user.actions.setUserId({ userId: json.userId}))
+      dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
+			window.location.href = '/home'
+
+		})
+		.catch((error) => {	
+			dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }))
+		})
+	}
 
 	return (
 		<>
@@ -59,3 +81,7 @@ export const LoginPage = ({ setPage }) => {
 	)
 }
 
+/*const handleSubmit = (event) => {
+    event.preventDefault()
+    dispatch(login(name, password))
+  } */

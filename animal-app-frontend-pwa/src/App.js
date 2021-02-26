@@ -23,11 +23,11 @@ export const App = () => {
           <Route path='/form'>
             <AnimalForm />
           </Route>
+          <Route path='/home'>
+            <HomePage />
+          </Route>
         </Switch>
       </BrowserRouter>
     </Provider>
   )
 }
-
-
-//<StartPage />
