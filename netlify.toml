@@ -1,5 +1,5 @@
 [build]
-  base    = "docusaurus/website"
-  publish = "docusaurus/website/build"
-  command = "yarn build"
+  base = "animal-app-frontend-pwa/"
+  publish = "build/"
+  command = "npm run build"
   
