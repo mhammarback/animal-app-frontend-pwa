@@ -14,7 +14,6 @@ export const SignUp = ({ setPage }) => {
 	const [name, setName] = useState('')
 	const [password, setPassword] = useState('')
 	const error = useSelector((store) => store.user.errorMessage)
-
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -33,7 +32,7 @@ export const SignUp = ({ setPage }) => {
 			if (!res.ok) {
 				throw new Error('Could not create account')
 			} 
-			  return res.json()
+			return res.json()
 		})
 		.then ((json) => {
 			dispatch(user.actions.setUsername({ username: name }))
