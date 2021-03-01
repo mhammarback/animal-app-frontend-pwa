@@ -1,9 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { Button } from './Burger'
+
 export const Nav = ({ open, setOpen }) => {
+
+	const handleLogout = () => {
+    swal({
+      title: 'Oh No 🙁',
+      text: 'Are you sure you want to Log Out?',
+      buttons: ['Close this alert', 'Log me out!'],
+      dangerMode: true,
+      icon: 'warning'
+    })
+      .then((willLogout) => {
+        if (willLogout) {
+          dispatch(user.actions.logout())
+          window.location.href = '/'
+        }
+      })
+  }
+
 	return (
 		<Section>
 		<Navbar open={open}>
@@ -14,6 +32,7 @@ export const Nav = ({ open, setOpen }) => {
 			    <LinkText>PROFILE</LinkText>
 		  	<Link to='/about' onClick={() => setOpen(false)}></Link>
 		      <LinkText>ABOUT</LinkText>
+					<Button type="button" onClick={handleLogout}>LOG OUT</Button>
 			</Wrapper>
 		</Navbar>
 		</Section>

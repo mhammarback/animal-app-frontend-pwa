@@ -56,7 +56,7 @@ export const user = createSlice({
 
 export const login = (name, password) => {
   return (dispatch) => {
-    fetch('https://final-project-technigo.herokuapp.com/sessions', {
+    fetch('https://animal-app-pwa.herokuapp.com/sessions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, password })
