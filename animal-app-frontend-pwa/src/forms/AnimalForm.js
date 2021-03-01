@@ -114,7 +114,7 @@ export const AnimalForm = () => {
 						 required
 					 />
 					</label>
-					<Button>Submit</Button>
+					<Button type ="submit">Submit</Button>
 				</Form>
 				</Main>
 				<Div>
@@ -127,7 +127,7 @@ export const AnimalForm = () => {
 		  return (
 			  <LoginPage />
 		  )
-	}
+	 }
 }
 	
 
