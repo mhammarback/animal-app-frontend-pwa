@@ -5,6 +5,7 @@ import { LoginPage } from './LoginPage'
 import { SignUp } from './SignUp'
 import { HomePage } from '../pages/HomePage'
 
+/*
 export const StartPage = () => {
 	const [page, setPage] = useState('login')
 	const accessToken = useSelector((store) => store.user.accessToken)
@@ -21,3 +22,6 @@ export const StartPage = () => {
 		)
 	}
 }
+
+
+*/

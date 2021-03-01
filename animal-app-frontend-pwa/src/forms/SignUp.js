@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { user } from '../reducers/user'
 import { LottieAnimation } from '../assets/Lottie'
 import cat from '../assets/cat_animation.json'
-import { Button } from '../lib/Button'
+import { Button, ButtonLink } from '../lib/Button'
 import { Main } from '../lib/Container'
 import { Form, Input, Span } from './FormStyles'
 
@@ -73,7 +73,7 @@ export const SignUp = ({ setPage }) => {
 			  <Button type='submit'>Sign up</Button>
 				{error && <Span>{`${error}`}</Span>}
 				<Span>or</Span>
-				<Button type='button' onClick={() => setPage('login')}>Log in</Button>
+				<ButtonLink to="/">Log in</ButtonLink>
 		  </Form>
 		</Main>
 		</>

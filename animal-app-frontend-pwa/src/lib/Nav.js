@@ -1,10 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import swal from 'sweetalert'
+import styled from 'styled-components'
 
-import { Button } from './Burger'
+import { user } from '../reducers/user'
+import { Button } from './Button'
 
 export const Nav = ({ open, setOpen }) => {
+	const dispatch = useDispatch()
 
 	const handleLogout = () => {
     swal({
