@@ -11,9 +11,11 @@ import { Form, Input, Span } from './FormStyles'
 const SIGNUP_URL ='https://animal-app-pwa.herokuapp.com/users'
 
 export const SignUp = ({ setPage }) => {
-	const dispatch = useDispatch()
 	const [name, setName] = useState('')
 	const [password, setPassword] = useState('')
+	const error = useSelector((store) => store.user.errorMessage)
+
+	const dispatch = useDispatch()
 
 	useEffect(() => {
     dispatch(user.actions.setErrorMessage({ errorMessage: null }))
@@ -23,18 +25,18 @@ export const SignUp = ({ setPage }) => {
     event.preventDefault()
 
 		fetch(SIGNUP_URL, {
-			method: 'POST',
-			headers: { 'Content-Type' : 'applicant/json' },
-			body: JSON.stringify({ name, password })
-		})
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, password })
+    })
 		.then ((res) => {
 			if (!res.ok) {
 				throw new Error('Could not create account')
-
-			} return res.json()
+			} 
+			  return res.json()
 		})
 		.then ((json) => {
-			dispatch(user.actions.setUserId({ userId: json.userId}))
+			dispatch(user.actions.setUsername({ username: name }))
       dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
 			window.location.href = '/form'
 		})
@@ -70,6 +72,7 @@ export const SignUp = ({ setPage }) => {
 				    />
 			    </label>
 			  <Button type='submit'>Sign up</Button>
+				{error && <Span>{`${error}`}</Span>}
 				<Span>or</Span>
 				<Button type='button' onClick={() => setPage('login')}>Log in</Button>
 		  </Form>
@@ -77,3 +80,6 @@ export const SignUp = ({ setPage }) => {
 		</>
 	)
 }
+
+
+//dispatch(user.actions.setUserId({ userId: json.userId}))

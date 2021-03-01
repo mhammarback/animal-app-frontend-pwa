@@ -38,7 +38,6 @@ export const LoginPage = ({ setPage }) => {
 			dispatch(user.actions.setUserId({ userId: json.userId}))
       dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
 			window.location.href = '/home'
-
 		})
 		.catch((error) => {	
 			dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }))
