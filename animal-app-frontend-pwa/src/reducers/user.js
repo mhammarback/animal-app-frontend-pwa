@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  username: localStorage.username || null,
   userId: 0,
   accessToken: localStorage.validToken || null,
   secretMessage: null,
-  errorMessage: null
+  errorMessage: null,
+  entry: localStorage.entry || null
 }
 
 export const user = createSlice({
@@ -32,6 +34,11 @@ export const user = createSlice({
     setSecretMessage: (state, action) => {
       const { secretMessage } = action.payload
       state.secretMessage = secretMessage
+    },
+    setEntry: (state, action) => {
+      const { entry } = action.payload;
+      state.entry = entry;
+      localStorage.setItem('entry', entry);
     },
     logout: (state) => {
       state.userId = 0;
