@@ -4,10 +4,11 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { user } from './reducers/user'
-import { AnimalForm } from './forms/AnimalForm'
-import { HomePage } from './pages/HomePage'
+
 import { LoginPage } from './forms/LoginPage'
 import { SignUp } from './forms/SignUp'
+import { AnimalForm } from './forms/AnimalForm'
+import { HomePage } from './pages/HomePage'
 
 
 const reducer = combineReducers({ user: user.reducer })
@@ -18,7 +19,7 @@ export const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path='/'>
+          <Route path='/' exact>
             <LoginPage />
           </Route>
           <Route path='/signup'>

@@ -10,7 +10,7 @@ import { Form, Input, Span } from './FormStyles'
 
 const SIGNUP_URL ='https://animal-app-pwa.herokuapp.com/users'
 
-export const SignUp = ({ setPage }) => {
+export const SignUp = () => {
 	const [name, setName] = useState('')
 	const [password, setPassword] = useState('')
 	const error = useSelector((store) => store.user.errorMessage)
@@ -82,3 +82,4 @@ export const SignUp = ({ setPage }) => {
 
 
 //dispatch(user.actions.setUserId({ userId: json.userId}))
+// { setPage }

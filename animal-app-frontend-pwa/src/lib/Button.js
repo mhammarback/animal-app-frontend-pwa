@@ -33,6 +33,7 @@ export const ButtonLink = styled(Link)`
   font-size: 16px;
   margin: 10px 5px;
   text-decoration: none;
+  color: #000;
 
   &:hover {
     background: #A48BFF;
