@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import { user } from '../reducers/user'
@@ -36,20 +36,20 @@ export const AnimalForm = () => {
 		}, 
 		body: JSON.stringify({ animalName, birthDate, gender, weight, breed })
 	})
-	.then ((res) => {
+	.then((res) => {
 		if (!res.ok) {
-			throw new Error('not able to save')
+			throw new Error('Unable to save profile.')
 		} else {
-        return res.json()
+			return res.json()
 		}
 	})
 	.then((json) => {
 		window.location.href = '/home'
 	})
 	.catch((error) => {
-		dispatch(user.actions.setErrorMessage({ errorMessage : error.toString() }))
+		dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }))
 	})
-}	
+}
 
   if (accessToken) {
 		return ( 
