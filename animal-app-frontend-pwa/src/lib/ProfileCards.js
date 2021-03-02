@@ -1,15 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { Button } from './Button'
 
+import { user } from '../reducers/user'
+import { Button } from './Button'
 import { Main } from './Container'
 
+const GETPROFILE_URL = 'https://animal-app-pwa.herokuapp.com/profiles'
+
 export const ProfileCards = () => {
+	const accessToken = useSelector((store) => store.user.accessToken)
+	const [animalProfileData, setAnimalProfileData] = useState({})
+	const { animalName, birthDate, gender, weight, breed } = animalProfileData
+	const dispatch = useDispatch()
+
+  const getAnimalData = () => {
+		fetch(GETPROFILE_URL, {
+			method: 'GET', 
+			headers: { Authorization: accessToken }
+		})
+			.then((res) => {
+				if(!res.ok) {
+					throw new Error('could not get information')
+				} 
+					return res.json()
+			})
+			.then ((json) => {
+				setAnimalProfileData(json)
+			})
+			.catch((error) => {
+				dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }))
+			})
+	}
+
+	useEffect(() => {
+		getAnimalData()
+	}, [])
+	
 	return (
 		<>
 		<Main>
 		<Card>
-			Text
+			<Text>{`${animalName}`}</Text>
+			<Text>{`${birthDate}`}</Text>
+			<Text>{`${gender}`}</Text>
+			<Text>{`${breed}`}</Text>
 			<CardButton>View Profile</CardButton>
 		</Card>
 		<Button>Add new animal</Button>
@@ -41,5 +76,8 @@ export const CardButton = styled.button`
   background-color: #fff;
   font-size: 16px;
   margin: 10px 5px;
+`
 
+export const Text = styled.p`
+  color: #fff;
 `
