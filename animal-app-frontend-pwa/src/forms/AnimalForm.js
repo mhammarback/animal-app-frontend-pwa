@@ -27,8 +27,7 @@ export const AnimalForm = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-	}
-
+	
 	fetch(PROFILE_URL, {
 		method: 'POST', 
 		headers: {
@@ -44,12 +43,13 @@ export const AnimalForm = () => {
         return res.json()
 		}
 	})
-	.then ((json) => {
+	.then((json) => {
 		window.location.href = '/home'
 	})
 	.catch((error) => {
 		dispatch(user.actions.setErrorMessage({ errorMessage : error.toString() }))
 	})
+}	
 
   if (accessToken) {
 		return ( 

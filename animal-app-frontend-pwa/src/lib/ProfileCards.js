@@ -17,7 +17,7 @@ export const ProfileCards = () => {
   const getAnimalData = () => {
 		fetch(GETPROFILE_URL, {
 			method: 'GET', 
-			headers: { Authorization: accessToken }
+			headers: { Authorization: accessToken }, 
 		})
 			.then((res) => {
 				if(!res.ok) {
