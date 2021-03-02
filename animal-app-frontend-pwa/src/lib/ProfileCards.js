@@ -25,7 +25,7 @@ export const ProfileCards = () => {
 				} 
 					return res.json()
 			})
-			.then ((json) => {
+			.then((json) => {
 				setAnimalProfileData(json)
 			})
 			.catch((error) => {
