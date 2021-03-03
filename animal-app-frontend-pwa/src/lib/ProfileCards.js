@@ -11,7 +11,7 @@ const GETPROFILE_URL = 'https://animal-app-pwa.herokuapp.com/profiles'
 export const ProfileCards = () => {
 	const accessToken = useSelector((store) => store.user.accessToken)
 	const [animalProfileData, setAnimalProfileData] = useState({})
-	const { animalName, birthDate, gender, weight, breed } = animalProfileData
+	const { createdAt, animalName, birthDate, gender, weight, breed } = animalProfileData
 	const dispatch = useDispatch()
 
   const getAnimalData = () => {
@@ -36,6 +36,8 @@ export const ProfileCards = () => {
 	useEffect(() => {
 		getAnimalData()
 	}, [])
+
+	console.log(animalName)
 	
 	return (
 		<>
@@ -52,6 +54,8 @@ export const ProfileCards = () => {
 		</>
 	)
 }
+
+
 
 export const Card = styled.div`
   display: flex; 
