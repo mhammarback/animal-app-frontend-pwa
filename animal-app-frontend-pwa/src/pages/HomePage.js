@@ -18,10 +18,10 @@ export const HomePage = () => {
   if (accessToken) {
 		return (
 			<Section>
-				<Burger open={open} setOpen={setOpen} />
-				<Nav open={open} setOpen={setOpen} />	
+				  <Burger open={open} setOpen={setOpen} />
+				  <Nav open={open} setOpen={setOpen} />	
 					<Span>{`Welcome, ${username}`}</Span>
-					<ProfileCards />
+					<ProfileCards></ProfileCards>
 			</Section>	
 			)
 	} else {

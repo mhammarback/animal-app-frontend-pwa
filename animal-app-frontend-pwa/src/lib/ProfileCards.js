@@ -16,11 +16,11 @@ export const ProfileCards = () => {
 
   const getAnimalData = () => {
 		fetch(GETPROFILE_URL, {
-			method: 'GET', 
-			headers: { Authorization: accessToken }, 
-		})
+      method: 'GET',
+      headers: { Authorization: accessToken }
+    })
 			.then((res) => {
-				if(!res.ok) {
+				if (!res.ok) {
 					throw new Error('could not get information')
 				} 
 					return res.json()
@@ -63,7 +63,7 @@ export const Card = styled.div`
 	justify-content: flex-end;
 	align-items: center;
   width: 85%;
-	height: 230px;
+	height: 250px;
 	background: black;
 	margin: 20px;
 	border: 1px solid white;

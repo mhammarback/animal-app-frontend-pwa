@@ -6,7 +6,7 @@ const initialState = {
   accessToken: localStorage.validToken || null,
   secretMessage: null,
   errorMessage: null,
-  entry: localStorage.entry || null
+  entry: localStorage.entry || null,
 }
 
 export const user = createSlice({
@@ -36,9 +36,14 @@ export const user = createSlice({
       state.secretMessage = secretMessage
     },
     setEntry: (state, action) => {
-      const { entry } = action.payload;
-      state.entry = entry;
-      localStorage.setItem('entry', entry);
+      const { entry } = action.payload
+      state.entry = entry
+      localStorage.setItem('entry', entry)
+    },
+    setDashboard: (state, action) => {
+      const { dashboardContent } = action.payload
+      state.dashboardContent = dashboardContent
+      localStorage.setItem('dashboardContent', dashboardContent)
     },
     logout: (state) => {
       state.userId = 0;
@@ -53,7 +58,13 @@ export const user = createSlice({
 
 
 //THUNKS 
+/*
 
+ setDashboard: (state, action) => {
+      const { dashboardContent } = action.payload
+      state.dashboardContent = dashboardContent
+      localStorage.setItem('dashboardContent', dashboardContent)
+    },
 export const login = (name, password) => {
   return (dispatch) => {
     fetch('https://animal-app-pwa.herokuapp.com/sessions', {
@@ -79,3 +90,4 @@ export const login = (name, password) => {
 }
 
 
+*/
